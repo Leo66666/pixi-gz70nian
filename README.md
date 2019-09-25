@@ -12,3 +12,5 @@ TexturePackerGUI雪碧图使用介绍：https://www.bookstack.cn/read/LearningPi
 本项目需要使用本地服务器打开，这里使用的Http-server插件。
 插件来源： https://www.npmjs.com/package/http-server
 
+# 线上地址
+http://huodong.dayoo.com/html/gz70nianjubian/index.shtml
