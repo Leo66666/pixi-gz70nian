@@ -14,3 +14,15 @@ TexturePackerGUI雪碧图使用介绍：https://www.bookstack.cn/read/LearningPi
 
 # 线上地址
 http://huodong.dayoo.com/html/gz70nianjubian/index.shtml
+
+# 相关问题
+alloytouch.js在使用过程中有时候change方法会产生NAN的错误，导致页面不能正常滑动，这个根据他们官网的issues发现是低版本Bug导致，解决办法升级到最新的文件就行。
+
+加载元素推荐使用官网介绍的雪碧图集合的形式加载元素,这里是用官网推荐的软件TexturePackerGUI试用版，选用JSON（hassh）导出即可，雪碧图不仅可以减少对服务器的多次请求，还可以加快网页的打开速度。
+
+官方文档的方法都是采用的变量简写，比如loader.add("images/tileset.png").load(setup);这里的loader对象其实是let loader = PIXI.loader;如果看文档手写运行发现报错的话，一定是这里挖了坑。
+
+关于屏幕最大最小滑动距离计算，这里已竖屏为例：这里是竖屏所以值为负，最小值为每个场景的高度之再减去当前手机的高度，即-app.stage.height + max，屏幕最小滑动值为0。
+
+alloytouch插件中 sensitivity属性可以设置滑动的屏幕灵敏度，用于调节用户手指滑动的速度。
+
