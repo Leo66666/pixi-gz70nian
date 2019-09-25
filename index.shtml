@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>广州地标建筑70年巨变</title>
+    <meta name="description" content="地标建筑，见证广州发展的新高度" />
+    <meta name="keywords" content="地标建筑，见证广州发展的新高度" />
+    <link rel="stylesheet" href="src/css/main.css">
+    <script src="src/js/alloytouch1.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneHeight = parseInt(window.screen.height);
+        var phoneScale = phoneWidth / 640;
+        var phoneScale2 = phoneHeight / 1040;
+        var ua = navigator.userAgent;
+        // if (/Android (\d+\.\d+)/.test(ua)) {
+        //     var version = parseFloat(RegExp.$1);
+        //     if (version > 2.3) {
+        //         document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+        //     } else {
+        //         document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+        //     }
+        // } else {
+        //     document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        // }
+        let win=window.innerWidth;
+        let sca=win/750;
+        document.write('<meta name="viewport" content="width=750, initial-scale='+sca+',minimum-scale='+sca+',maximum-scale='+sca+',user-scalable=no,target-densitydpi=device-dpi">');
+
+    </script>
+</head>
+
+<body>
+
+    <div class="home">
+        <img src="src/images/home-bg.png" alt="" class="home-bg">
+        <img src="src/images/logo1.png" alt="" class="home-logo">
+        <div class="home-loading">
+            <img src="src/images/loading-bg.png" alt="" class="hl-bg">
+            <img src="src/images/loading-icon.png" alt="" class="hl-icon">
+            <p class="hl-block1"></p>
+            <p class="hl-block2"></p>
+            <p class="hl-text"></p>
+        </div>
+    </div>
+    <div class="home-ready hidden">
+        <img src="src/images/scene5-flower1.png" alt="" class="ready-flower">
+        <img src="src/images/scene2-clouds2.png" alt="" class="ready-clouds1">
+        <img src="src/images/scene2-clouds3.png" alt="" class="ready-clouds2">
+        <img src="src/images/scene2-clouds4.png" alt="" class="ready-clouds3">
+        <img src="src/images/ready-text.png" alt="" class="ready-text">
+        <img src="src/images/ready-btn.png" alt="" onclick="btnClick(this)" class="ready-btn">
+    </div>
+    <div class="modal">
+        <dis class="modal-tips">
+            <img src="src/images/game-tips.png" alt="" class="tips-text">
+            <img src="src/images/game-tips2.png" alt="" class="tips-text2">
+            <a href="javascript:void(0)" onclick="btnClick(this)" class="tips-btn"></a>
+        </dis>
+    </div>
+    <div class="canvas-tips">
+        <a href="javascript:void(0)" class="ct-img ct-img1"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img2"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img3"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img4"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img5"></a>
+        <a href="javascript:void(0)" class="ct-none"></a>
+        <a href="javascript:void(0)" class="ct-none"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img6"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img7"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img8"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img9"></a>
+        <a href="javascript:void(0)" class="ct-img ct-img10"></a>
+    </div>
+    <div id="canvas" class="hidden">
+
+    </div>
+    <div class="modal-tips">
+        <div class="mt-item1">
+            <p class="mt-header">高<span>28</span>米</p>
+            <p class="mt-title">镇海楼</p>
+            <p class="mt-content">
+                当时珠江河道甚宽，古人多称之为“海”，故用“镇海”之意取名。镇海楼高28米，歇山顶，复檐五层，朱墙绿瓦，巍峨壮观，被誉为“岭南第一胜概”。1928年，由木构架改建成钢筋混凝土结构，现是广州博物馆，记载了广州城两千多年的悠悠岁月。
+            </p>
+        </div>
+        <div class="mt-item2">
+            <p class="mt-header">高<span>∞</span>米</p>
+            <p class="mt-title">百粤冠祠</p>
+            <p class="mt-content">
+                三雕（石雕、砖雕、木雕）、二塑（陶塑、灰塑）和铜铁铸、绘画装饰艺术构成了陈家祠“七绝”建筑工艺。主体建筑为五座三进、九堂六院，每进之间既有庭院相隔，又利用廊、庑巧妙地联接起来，虚实相间，气势雄伟。现为广东民间工艺博物馆。
+            </p>
+        </div>
+        <div class="mt-item3">
+            <p class="mt-header">高<span>49</span>米</p>
+            <p class="mt-title">中山纪念堂</p>
+            <p class="mt-content">
+                中山纪念堂是一座八角形宫殿式建筑，于1931年建成，至今仍是广州最具标志性的建筑物之一。总体布局采用中国传统的宫殿式风格与近代西洋平面设计手法结合，跨度达71米的建筑空间内不设一柱，庄严宏伟。</p>
+        </div>
+        <div class="mt-item4">
+            <p class="mt-header">高<span>12</span>层</p>
+            <p class="mt-title">南方大厦</p>
+            <p class="mt-content">
+                南方大厦的前身是城外大新百货公司，于1922年建成，是中国最早的摩天大楼和广州第一座钢筋混凝土结构高楼。1938年在战火中被焚毁，后来在市政府的支持下重建，1954年国庆节正式开业，楼高12层，成为广州最著名的百货大厦之一。
+            </p>
+        </div>
+        <div class="mt-item5">
+            <p class="mt-header">高<span>64</span>米</p>
+            <p class="mt-title">爱群大厦</p>
+            <p class="mt-content">
+                1937年落成开业的爱群大厦，坐落于广州西堤江畔，一出世就以15层、64米的高度独冠南天，占据广州第一高楼宝座达30年之久。大厦风格独特，是广州第一幢钢框架结构的仿美国摩天式的高层建筑，也是一座典型的具有岭南特色的骑楼建筑。
+            </p>
+        </div>
+        <div class="mt-item6">
+            <p class="mt-header">高<span>11</span>米</p>
+            <p class="mt-title">五羊石雕</p>
+            <p class="mt-content">
+                五羊石雕由130多块花岗岩雕刻组砌而成，高11米，以四头形态各异的小羊簇拥着一头口衔稻穗的高大母羊为造型，再现了“五羊衔谷”的传说，历来是广州城徽。</p>
+        </div>
+        <div class="mt-item7">
+            <p class="mt-header">高<span>114.05</span>米</p>
+            <p class="mt-title">白云宾馆</p>
+            <p class="mt-content">
+                1976年建成的白云宾馆，主楼33层，高114.05米，是我国首幢高度超过100米的高楼。开业以后，多次承办广交会大型开幕酒会，接待过许多国家元首和中外知名人士，成为广州对外友好交往的一个重要窗口。</p>
+        </div>
+        <div class="mt-item8">
+            <p class="mt-header">高<span>391</span>米</p>
+            <p class="mt-title">中信广场</p>
+            <p class="mt-content">
+                中信广场坐落于天河北路的广州新城市中轴线上，由高80层的主楼和两幢高38层的副楼以及4层高的裙楼组成。连同顶上的铁塔构筑物总高度为391米，比白云山的摩天岭还要高，成为广州标志性建筑物之一。</p>
+        </div>
+        <div class="mt-item9">
+            <p class="mt-header">高<span>530</span>米</p>
+            <p class="mt-title">东塔（广州周大福金融中心）</p>
+            <p class="mt-content">
+                东塔建筑外观按不同功能定位分为三节且呈节节高升之势。人从地面仰视一二节间的连接处，其延长线恰好到达广州塔顶端。塔顶采取“之”字形退台设计；结构上首次采取超高层绿色混凝土，减轻东塔自重的同时还增加了使用面积。
+            </p>
+        </div>
+        <div class="mt-item10">
+            <p class="mt-header">高<span>432</span>米</p>
+            <p class="mt-title">西塔（广州国际金融中心）</p>
+            <p class="mt-content">
+                2012年，全面投入使用的广州国际金融中心，外号“西塔”。楼高432米，地上103层，跻身“全球十大顶尖超高建筑”之列。这是全球首次采用钢管混凝土巨型斜交网格外筒+混凝土内筒的筒中筒结构体系。</p>
+        </div>
+        <a href="javascript:void(0)" onclick="closeTips()" class="mt-btn"></a>
+    </div>
+    <img src="src/images/share-bg.png" alt="" class="share-bg">
+    <div class="canvas-btns">
+        <a href="javascript:void" onclick="btnClick(this)" class="btn-share"></a>
+        <a href="javascript:void" onclick="btnClick(this)" class="btn-more"></a>
+    </div>
+
+    <audio src="src/mp3/mie.mp3"  id="mie"></audio>
+    <audio src="src/mp3/cat.mp3"  id="cat"></audio>
+    <audio src="src/mp3/moon.mp3"  id="moon"></audio>
+    <audio src="src/mp3/air.mp3"  id="air"></audio>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        function player() {
+            var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Jaudio";
+
+            // 创建音频dom
+            var player = document.createElement("audio");
+            player.src = "src/mp3/bg.mp3";
+            player.style.display = "none";
+            player.autoplay = "autoplay";
+            player.loop = "loop";
+            player.id = "Jaudio";
+
+
+            document.querySelector('body').appendChild(player);
+
+            var audio = document.getElementById(id),
+                play = function play() {
+                    audio.play();
+                    document.removeEventListener("touchstart", play, false);
+                };
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                // 开始播放音乐
+                play();
+            }, false);
+            document.addEventListener('YixinJSBridgeReady', function () {
+                // 开始播放音乐
+                play();
+            }, false);
+            document.addEventListener("touchstart", play, false);
+        }
+        player()
+    </script>
+    <script src="src/js/jquery.js"></script>
+    <script src="src/js/Pixi.min.js" charset="utf-8"></script>
+    <script src="src/js/TimelineMax.min.js" charset="utf-8"></script>
+    <script src="src/js/TweenMax.min.js" charset="utf-8"></script>
+    <script src="src/js/scene.js" charset="utf-8"></script>
+    <script src="src/js/sprites.js" charset="utf-8"></script>
+    <script src="src/js/resources.js" charset="utf-8"></script>
+    <script src="src/js/audio.js" charset="utf-8"></script>
+    <script src="src/js/main.js" charset="utf-8"></script>
+    <script src="src/js/animation.js" charset="utf-8"></script>
+    <script>
+        function wxShare(url, img, callback) {
+            var shareTxt = $('title').text();
+            var shareesac = $("[name='description']").attr("content");
+            var shareurl = url;
+            var sharephoto = img;
+            $.ajax({
+                url: "http://mp.i.dayoo.com/activityinterface/wechat/share",
+                dataType: 'jsonp',
+                success: function success(response) {
+                    if (typeof response.timestamp != 'undefined' && typeof response.nonceStr != 'undefined' && typeof response.signature != 'undefined') {
+                        wx.config({
+                            debug: false,
+                            appId: response.appId,
+                            timestamp: response.timestamp,
+                            nonceStr: response.nonceStr,
+                            signature: response.signature,
+                            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+                        });
+                        wx.ready(function () {
+                            wx.onMenuShareTimeline({
+                                title: shareTxt,
+                                link: shareurl,
+                                imgUrl: sharephoto,
+                                success: function success() {
+                                    if (callback) {
+                                        callback();
+                                    }
+                                }
+                            });
+                            wx.onMenuShareAppMessage({
+                                title: shareTxt,
+                                desc: shareesac,
+                                link: shareurl,
+                                imgUrl: sharephoto,
+                                success: function success() {
+                                    if (callback) {
+                                        callback();
+                                    }
+                                }
+                            });
+                            wx.onMenuShareQQ({
+                                title: shareTxt,
+                                desc: shareesac,
+                                link: shareurl,
+                                imgUrl: sharephoto
+                            });
+                            wx.onMenuShareWeibo({
+                                title: shareTxt,
+                                desc: shareesac,
+                                link: shareurl,
+                                imgUrl: sharephoto
+                            });
+                        });
+                    }
+                }
+            });
+        }
+
+        var img = 'http://huodong.dayoo.com/html/gz70nianjubian/src/images/share-img.png';
+        var url = 'http://huodong.dayoo.com/html/gz70nianjubian/index.shtml';
+
+        wxShare(url, img, function () {
+            $('.share-bg').hide();
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{"frames": {
+
+"ren01.png":
+{
+	"frame": {"x":0,"y":0,"w":84,"h":257},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":257},
+	"sourceSize": {"w":84,"h":257},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"ren02.png":
+{
+	"frame": {"x":0,"y":257,"w":84,"h":257},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":257},
+	"sourceSize": {"w":84,"h":257},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"ren": ["ren01.png","ren02.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "man.png",
+	"format": "RGBA8888",
+	"size": {"w":84,"h":514},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:59103391074c608933476361422af677:1eaa5faa3b92bf0b28bd092a92c77515:7cb16ae2a7812a83bde2d0f7d63f713f$"
+}
+}

@@ -1,0 +1,140 @@
+{"frames": {
+
+"scene2-tower.png":
+{
+	"frame": {"x":1432,"y":1032,"w":389,"h":960},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":389,"h":960},
+	"sourceSize": {"w":389,"h":960}
+},
+"scene2-tree1.png":
+{
+	"frame": {"x":429,"y":174,"w":696,"h":285},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":696,"h":285},
+	"sourceSize": {"w":696,"h":285}
+},
+"scene3-clouds1.png":
+{
+	"frame": {"x":1032,"y":0,"w":293,"h":167},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":293,"h":167},
+	"sourceSize": {"w":293,"h":167}
+},
+"scene3-clouds2.png":
+{
+	"frame": {"x":341,"y":543,"w":750,"h":447},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":750,"h":447},
+	"sourceSize": {"w":750,"h":447}
+},
+"scene3-clouds3.png":
+{
+	"frame": {"x":1125,"y":174,"w":603,"h":369},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":603,"h":369},
+	"sourceSize": {"w":603,"h":369}
+},
+"scene3-clouds4.png":
+{
+	"frame": {"x":618,"y":0,"w":414,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":414,"h":140},
+	"sourceSize": {"w":414,"h":140}
+},
+"scene3-dio.png":
+{
+	"frame": {"x":205,"y":0,"w":271,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":271,"h":100},
+	"sourceSize": {"w":271,"h":100}
+},
+"scene3-house1.png":
+{
+	"frame": {"x":716,"y":1032,"w":716,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":716,"h":559},
+	"sourceSize": {"w":716,"h":559}
+},
+"scene3-house2.png":
+{
+	"frame": {"x":0,"y":1032,"w":716,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":716,"h":559},
+	"sourceSize": {"w":716,"h":559}
+},
+"scene3-man.png":
+{
+	"frame": {"x":345,"y":174,"w":84,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":256},
+	"sourceSize": {"w":84,"h":256}
+},
+"scene3-text1.png":
+{
+	"frame": {"x":0,"y":174,"w":345,"h":224},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":224},
+	"sourceSize": {"w":345,"h":224}
+},
+"scene3-text2.png":
+{
+	"frame": {"x":0,"y":0,"w":205,"h":41},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":205,"h":41},
+	"sourceSize": {"w":205,"h":41}
+},
+"scene3-text3.png":
+{
+	"frame": {"x":1325,"y":0,"w":510,"h":174},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":510,"h":174},
+	"sourceSize": {"w":510,"h":174}
+},
+"scene4-cat.png":
+{
+	"frame": {"x":476,"y":0,"w":142,"h":104},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":104},
+	"sourceSize": {"w":142,"h":104}
+},
+"scene4-chair.png":
+{
+	"frame": {"x":0,"y":543,"w":341,"h":407},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":341,"h":407},
+	"sourceSize": {"w":341,"h":407}
+},
+"scene4-clouds1.png":
+{
+	"frame": {"x":1091,"y":543,"w":674,"h":489},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":674,"h":489},
+	"sourceSize": {"w":674,"h":489}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "data2.png",
+	"format": "RGBA8888",
+	"size": {"w":1835,"h":1992},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f9d123623beaf7c4da379e1c670d229f:1bd4b1d39ab1bb02880b20b1eabc6c24:44ab0290b2c7e3448e7d8b9842a1c787$"
+}
+}

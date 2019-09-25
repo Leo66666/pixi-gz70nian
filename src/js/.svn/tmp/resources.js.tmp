@@ -1,0 +1,531 @@
+// 创建PIXI应用
+const w = document.body.clientWidth,
+    h = document.body.clientHeight;
+let app = new PIXI.Application({
+    width: 750,
+    height: h,
+    backgroundColor: 0xe8f1fa,
+    antialias: true,    // default: false
+    transparent: false, // default: false
+    resolution: 1,       // default: 1
+    forceCanvas: true,
+});
+
+
+
+// 获取屏幕宽高，判断横屏还是竖屏
+let min = (w < h) ? w : h;
+let scale = min / 750;  // 根据设计稿尺寸进行缩放比例调整
+console.log(w, h, min, "放大系数：", scale);
+
+
+
+let Application = PIXI.Application,
+    Container = PIXI.Container,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Sprite = PIXI.Sprite,
+    Rectangle = PIXI.Rectangle;
+
+loader.add('home-bg', 'src/images/home-bg.png')
+    .add('loading-icon', 'src/images/loading-icon.png')
+    .add('loading-bg', 'src/images/loading-bg.png')
+    .add('logo1', 'src/images/logo1.png')
+    .add('bg1', 'src/images/bg.jpg')
+    .add('bg2', 'src/images/bg.jpg')
+    .add('bg3', 'src/images/bg.jpg')
+    .add('bg4', 'src/images/bg.jpg')
+    .add('bg5', 'src/images/bg.jpg')
+    .add('bg6', 'src/images/bg.jpg')
+    .add('bg7', 'src/images/bg.jpg')
+    .add('bg8', 'src/images/bg.jpg')
+    .add('bg9', 'src/images/bg.jpg')
+    .add('bg10', 'src/images/bg.jpg')
+    .add('bg11', 'src/images/bg.jpg')
+    .add('bg12', 'src/images/bg.jpg')
+    .add('bg13', 'src/images/bg.jpg')
+    .add('bg14', 'src/images/bg.jpg')
+    .add('bg15', 'src/images/bg.jpg')
+    .add('point1', 'src/images/point.png')
+    .add('point2', 'src/images/point.png')
+    .add('point3', 'src/images/point.png')
+    .add('point4', 'src/images/point.png')
+    .add('point5', 'src/images/point.png')
+    .add('point6', 'src/images/point.png')
+    .add('point7', 'src/images/point.png')
+    .add('point8', 'src/images/point.png')
+    .add('point9', 'src/images/point.png')
+    .add('point10', 'src/images/point.png')
+    .add('share', 'src/images/share.png')
+    .add('more', 'src/images/more.png')
+    .add('scene1-clouds1', 'src/images/scene1-clouds1.png')
+    .add('scene1-tree2', 'src/images/scene1-tree2.png')
+    .add('scene9-train', 'src/images/scene9-train.png')
+    .add('scene15-bg1', 'src/images/scene15-bg1.png')
+    .add('scene15-tower1', 'src/images/scene15-tower1.png')
+    .add('scene15-clouds1', 'src/images/scene15-clouds1.png')
+    .add('scene15-clouds2', 'src/images/scene15-clouds2.png')
+    .add('scene15-clouds3', 'src/images/scene15-clouds3.png')
+    .add('scene15-clouds5', 'src/images/scene15-clouds5.png')
+    .add('scene5-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene5-clouds2', 'src/images/scene4-clouds2.png')
+    .add('scene5-clouds3', 'src/images/scene2-clouds4.png')
+    .add('scene6-clouds1', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds2', 'src/images/scene2-clouds2.png')
+    .add('scene6-clouds3', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds4', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds5', 'src/images/scene2-clouds2.png')
+    .add('scene6-clouds6', 'src/images/scene2-clouds2.png')
+    .add('scene7-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene7-clouds2', 'src/images/scene2-clouds2.png')
+    .add('scene7-clouds3', 'src/images/scene1-clouds2.png')
+    .add('scene8-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene8-clouds2', 'src/images/scene1-clouds2.png')
+    .add('scene8-clouds3', 'src/images/scene3-clouds3.png')
+    .add('scene8-clouds4', 'src/images/scene2-clouds1.png')
+    .add('scene9-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene9-clouds2', 'src/images/scene3-clouds2.png')
+    .add('scene9-clouds3', 'src/images/scene2-clouds4.png')
+    .add('scene9-clouds4', 'src/images/scene2-clouds2.png')
+    .add('scene9-clouds5', 'src/images/scene3-clouds4.png')
+    .add('scene9-clouds6', 'src/images/scene3-clouds4.png')
+    .add('scene11-clouds1', 'src/images/scene2-clouds3.png')
+    .add('scene11-clouds2', 'src/images/scene1-clouds1.png')
+    .add('scene11-clouds3', 'src/images/scene3-clouds1.png')
+    .add('scene13-clouds1', 'src/images/scene13-clouds1.png')
+    .add('scene13-clouds2', 'src/images/scene4-clouds1.png')
+    .add('scene13-clouds3', 'src/images/scene4-clouds1.png')
+    .add('scene13-clouds4', 'src/images/scene13-clouds2.png')
+    .add('scene5-text1', 'src/images/scene5-text1.png')
+    .add('scene8-dio1', 'src/images/dio.png')
+    .add('scene8-dio2', 'src/images/dio.png')
+    .add('scene8-dio3', 'src/images/dio.png')
+    .add('scene3-dio', 'src/images/scene3-dio.png')
+    .add('scene7-door', 'src/images/scene7-door.png')
+    .add('scene10-tree1', 'src/images/shu.png')
+    .add('scene10-lantern1', 'src/images/denglong.png')
+    .add('scene10-lantern2', 'src/images/denglong2.png')
+    .add('scene10-lantern3', 'src/images/denglong.png')
+    .add('scene7-bridge', 'src/images/qiao.png')
+    .add('scene7-bridge2', 'src/images/qiao-zuo.png')
+    .add('scene7-bridge3', 'src/images/qiao-you.png')
+    .add('scene6-leaf1', 'src/images/leaf1.png')
+    .add('scene6-leaf2', 'src/images/leaf2.png')
+    .add('scene6-leaf3', 'src/images/leaf3.png')
+    .add('scene6-leaf4', 'src/images/leaf1.png')
+    .add('scene10-leaf1', 'src/images/leaf1.png')
+    .add('scene10-leaf2', 'src/images/leaf2.png')
+    .add('scene10-leaf3', 'src/images/leaf3.png')
+    .add('scene10-leaf4', 'src/images/leaf1.png')
+    .add('scene8-car1', 'src/images/car1.png')
+    .add('scene8-car2', 'src/images/car2.png')
+    .add('scene8-car3', 'src/images/car3.png')
+    .add('scene8-car4', 'src/images/car4.png')
+    .add('scene8-car5', 'src/images/car5.png')
+    .add('scene14-text2', 'src/images/scene14-text2.png')
+    .add('scene13-zhifeiji', 'src/images/zhifeiji.png')
+    .add('src/images/data1.json')
+    .add('src/images/data2.json')
+    .add('src/images/data3.json')
+    .add('src/images/data4.json')
+    .add('src/images/data5.json')
+    .add('src/images/data6.json')
+    .add('src/images/data7.json')
+    .add('src/images/data8.json')
+    .add('src/images/data9.json')
+    .add('src/images/data10.json')
+    .add('src/images/man.json')
+    .add('src/images/point.json')
+
+loader.on("progress", function (target, resource) {
+
+    //加载进度
+    $('.home .hl-block2').css('width', parseInt(target.progress) + "%")
+    $('.home .hl-text').html(parseInt(target.progress) + "%")
+});
+
+loader.on('complete', function (target) {
+    document.getElementById('canvas').appendChild(app.view);
+
+    $('.home').hide().next().show();
+
+    initScenes(); // 初始化场景
+    initSprites();  // 初始化精灵
+    initAnimation(); // 初始化动画
+
+    initTouch(true, 'y');
+
+    // 帧动画初始化
+    frameInit();
+    initClickEvent(); //初始化点击事件
+});
+
+loader.load();
+
+
+
+function frameInit() {
+    createFrame({
+        url: 'src/images/man.json',
+        list: ['ren01.png', 'ren02.png'],
+        position: { x: 300, y: 750 },
+        speed: 0.1,
+        name: 'ren',
+        scene: 3
+    });
+
+    // 光标1
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 360, y: 750 },
+        speed: 0.1,
+        name: 'point1',
+        scene: 1,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标2
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 280, y: 320 },
+        speed: 0.1,
+        name: 'point2',
+        scene: 3,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标3
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 438, y: 492 },
+        speed: 0.1,
+        name: 'point3',
+        scene: 5,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标4
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 590, y: 1050 - 50 },
+        speed: 0.1,
+        name: 'point4',
+        scene: 6,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标5
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 140, y: 200 - 230 },
+        speed: 0.1,
+        name: 'point5',
+        scene: 7,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标6
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 380, y: 1300 - 200 - 50 },
+        speed: 0.1,
+        name: 'point6',
+        scene: 7,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标7
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 400, y: 450 },
+        speed: 0.1,
+        name: 'point7',
+        scene: 8,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标8
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 620, y: 600 },
+        speed: 0.1,
+        name: 'point8',
+        scene: 8,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标9
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 150, y: 650 },
+        speed: 0.1,
+        name: 'point9',
+        scene: 12,
+        buttonMode: true,
+        interactive: true,
+    });
+
+    // 光标10
+    createFrame({
+        url: 'src/images/point.json',
+        list: ['01.png', '02.png', '03.png', '04.png'],
+        position: { x: 550, y: 450 },
+        speed: 0.1,
+        name: 'point10',
+        scene: 12,
+        buttonMode: true,
+        interactive: true,
+    });
+
+}
+function createFrame({ url, list, position, speed, name, scene, buttonMode = false, interactive = false }) {
+    let id = PIXI.loader.resources[url].textures;
+
+    //创建纹理数组
+    let frames = [];
+
+    list.forEach(item => {
+        frames.push(id[item]);
+    })
+
+    //创建动画精灵
+    let tar = new PIXI.extras.AnimatedSprite(frames);
+    //设置动画精灵的速度
+    tar.animationSpeed = speed;
+    tar.x = position.x;
+    tar.y = position.y;
+    tar.buttonMode = buttonMode;
+    tar.interactive = interactive;
+
+    sprites[name] = tar;
+    console.log(name)
+    //把动画精灵添加到舞台
+    scenes['scene' + scene].addChild(tar)
+    //播放动画精灵
+    tar.play();
+}
+
+function initClickEvent() {
+    let showIndex = [
+        'scene1-house2',
+        'scene3-house2',
+        'scene5-house2',
+        'scene6-house3',
+        'scene7-house2',
+        'scene7-build2',
+        'scene8-build6',
+        'scene8-build3',
+        'scene11-build3',
+        'scene11-build5',
+    ];
+    for (let i = 0; i < 10; i++) {
+        let item = sprites['point' + (i + 1)];
+        item.on('pointertap', function () {
+            console.log(321321)
+            if (item.is_show != 1) {
+                TweenMax.to(sprites[showIndex[i]], 1.5, {
+                    alpha: 1,
+                    onComplete: function () {
+                        //显示提示框
+                        $('.modal-tips').show().children('.mt-item' + (i + 1)).fadeIn();
+                        $('.ct-img' + (i + 1)).addClass('on');
+                        sprites[showIndex[i]].is_show = 1;
+                    }
+                });
+            }
+        });
+    }
+}
+function closeTips() {
+    $('.modal-tips').hide().children('div').hide();
+}
+$('.share-bg').click(function () {
+    $('.share-bg').hide();
+})
+function btnClick(e) {
+    if ($(e).hasClass('btn-share')) {
+        $('.share-bg').show();
+    } else if ($(e).hasClass('ready-btn')) {
+        $('.home-ready').hide();
+        $('#canvas').show();
+        $('.canvas-tips').css('display', 'flex')
+    } else {
+        alloyTouchs.stop();
+        alloyTouchs.to(0);
+    }
+}
+
+let spriteList = {
+    'scene1-clouds2': 1,
+    'scene1-clouds3': 1,
+    'scene1-house1': 1,
+    'scene1-house2': 1,
+    'scene1-text1': 1,
+    'scene1-text2': 1,
+    'scene1-tree1': 1,
+    'scene2-clouds1': 1,
+    'scene2-clouds2': 1,
+    'scene2-clouds3': 1,
+    'scene2-clouds4': 1,
+    'scene2-dio1': 1,
+    'scene2-flower': 1,
+    'scene2-man': 1,
+    'scene2-text1': 1,
+    'scene2-text2': 1,
+    'scene2-tower': 2,
+    'scene2-tree1': 2,
+    'scene3-clouds1': 2,
+    'scene3-clouds2': 2,
+    'scene3-clouds3': 2,
+    'scene3-clouds4': 2,
+    'scene3-dio': 2,
+    'scene3-house1': 2,
+    'scene3-house2': 2,
+    'scene3-man': 2,
+    'scene3-text1': 2,
+    'scene3-text2': 2,
+    'scene3-text3': 2,
+    'scene4-cat': 2,
+    'scene4-chair': 2,
+    'scene4-clouds1': 2,
+    'scene4-clouds2': 3,
+    'scene4-desk': 3,
+    'scene4-door': 3,
+    'scene4-floor': 3,
+    'scene4-flower1': 3,
+    'scene4-flower2': 3,
+    'scene4-flower3': 3,
+    'scene4-flower4': 3,
+    'scene4-food': 3,
+    'scene4-house': 3,
+    'scene5-flower1': 3,
+    'scene5-flower2': 3,
+    'scene5-house1': 3,
+    'scene5-house2': 4,
+    'scene5-text2': 4,
+    'scene5-text3': 4,
+    'scene5-text4': 4,
+    'scene5-text5': 4,
+    'scene5-text6': 4,
+    'scene6-flower1': 4,
+    'scene6-flower2': 4,
+    'scene6-house1': 4,
+    'scene6-house2': 4,
+    'scene6-house3': 4,
+    'scene6-house4': 4,
+    'scene6-text1': 4,
+    'scene6-text2': 4,
+    'scene6-tree1': 4,
+    'scene6-tree2': 4,
+    'scene6-tree3': 4,
+    'scene6-bridge': 4,
+    'scene6-build1': 4,
+    'scene6-build2': 4,
+    'scene6-door': 4,
+    'scene6-flower1': 4,
+    'scene6-glass': 4,
+    'scene7-house1': 5,
+    'scene7-house2': 5,
+    'scene7-river': 5,
+    'scene7-river2': 5,
+    'scene7-text1': 5,
+    'scene7-text2': 5,
+    'scene7-text3': 5,
+    'scene7-text4': 5,
+    'scene7-tree1': 5,
+    'scene7-tree2': 5,
+    'scene7-tree3': 5,
+    'scene7-tree4': 5,
+    'scene8-bridge1': 5,
+    'scene8-bridge2': 5,
+    'scene8-bridge3': 5,
+    'scene8-build1': 5,
+    'scene8-build2': 5,
+    'scene8-build3': 5,
+    // 'scene7-bridge': 4,
+    'scene7-flower1': 4,
+    'scene7-glass': 4,
+    'scene7-build1': 4,
+    'scene7-build2': 4,
+    'scene8-build4': 6,
+    'scene8-build5': 6,
+    'scene8-build6': 6,
+    'scene8-text1': 6,
+    'scene8-text2': 6,
+    'scene8-text3': 6,
+    'scene8-text4': 6,
+    'scene8-text5': 6,
+    'scene9-air': 6,
+    'scene9-build1': 6,
+    'scene9-text1': 6,
+    'scene9-tree1': 6,
+    'scene10-boat1': 6,
+    'scene10-boat2': 6,
+    'scene10-build1': 6,
+    'scene9-build2': 7,
+    'scene9-build3': 7,
+    'scene9-build4': 7,
+    'scene10-bridge1': 7,
+    'scene10-desk': 7,
+    'scene10-food1': 7,
+    'scene10-stone1': 7,
+    'scene9-bridge1': 6,
+    'scene10-food2': 8,
+    'scene10-river': 8,
+    'scene10-text1': 8,
+    'scene10-text2': 8,
+    'scene10-text3': 8,
+    // 'scene10-tree1': 8,
+    'scene10-tree2': 8,
+    'scene11-build1': 8,
+    'scene11-build2': 8,
+    'scene11-build3': 8,
+    'scene11-build4': 8,
+    'scene11-build5': 8,
+    'scene11-build6': 8,
+    'scene11-glass1': 8,
+    'scene11-build7': 9,
+    'scene11-glass2': 9,
+    'scene11-text1': 9,
+    'scene11-text2': 9,
+    'scene11-text3': 9,
+    'scene11-text4': 9,
+    'scene13-bg1': 9,
+    'scene13-clouds1': 9,
+    'scene13-clouds2': 9,
+    'scene13-text1': 9,
+    'scene13-text2': 9,
+    'scene14-build1': 9,
+    'scene14-build2': 9,
+    'scene14-build3': 9,
+    'scene14-build4': 9,
+    'more': 10,
+    'scene14-bg': 10,
+    'scene14-text1': 10,
+    'scene14-tree1': 10,
+    'scene14-tree2': 10,
+    'scene14-tree3': 10,
+    'scene15-text1': 10,
+    'scene15-text2': 10,
+    'scene15-text3': 10,
+    'share': 10,
+}
+

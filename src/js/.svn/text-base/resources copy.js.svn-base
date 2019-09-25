@@ -1,0 +1,315 @@
+// 创建PIXI应用
+const w = document.body.clientWidth,
+    h = document.body.clientHeight;
+let app = new PIXI.Application({
+    width: w,
+    height: h,
+    backgroundColor: 0xe8f1fa,
+    antialias: true,    // default: false
+    transparent: false, // default: false
+    resolution: 1,       // default: 1
+    // forceCanvas: true,
+});
+
+
+
+// 获取屏幕宽高，判断横屏还是竖屏
+let min = (w < h) ? w : h;
+let scale = min / 750;  // 根据设计稿尺寸进行缩放比例调整
+console.log(w, h, min, "放大系数：", scale);
+
+
+
+let Application = PIXI.Application,
+    Container = PIXI.Container,
+    loader = PIXI.loader,
+    resources = PIXI.loader.resources,
+    TextureCache = PIXI.utils.TextureCache,
+    Sprite = PIXI.Sprite,
+    Rectangle = PIXI.Rectangle;
+
+loader.add('home-bg', 'src/images/home-bg.png')
+    .add('logo1', 'src/images/logo1.png')
+    .add('loading-icon', 'src/images/loading-icon.png')
+    .add('loading-bg', 'src/images/loading-bg.png')
+    .add('bg1', 'src/images/bg.jpg')
+    .add('bg2', 'src/images/bg.jpg')
+    .add('bg3', 'src/images/bg.jpg')
+    .add('bg4', 'src/images/bg.jpg')
+    .add('bg5', 'src/images/bg.jpg')
+    .add('bg6', 'src/images/bg.jpg')
+    .add('bg7', 'src/images/bg.jpg')
+    .add('bg8', 'src/images/bg.jpg')
+    .add('bg9', 'src/images/bg.jpg')
+    .add('bg10', 'src/images/bg.jpg')
+    .add('bg11', 'src/images/bg.jpg')
+    .add('bg12', 'src/images/bg.jpg')
+    .add('bg13', 'src/images/bg.jpg')
+    .add('bg14', 'src/images/bg.jpg')
+    .add('bg15', 'src/images/bg.jpg')
+    .add('point1', 'src/images/point.png')
+    .add('point2', 'src/images/point.png')
+    .add('point3', 'src/images/point.png')
+    .add('point4', 'src/images/point.png')
+    .add('point5', 'src/images/point.png')
+    .add('point6', 'src/images/point.png')
+    .add('point7', 'src/images/point.png')
+    .add('point8', 'src/images/point.png')
+    .add('point9', 'src/images/point.png')
+    .add('point10', 'src/images/point.png')
+    .add('scene1-tree1', 'src/images/scene1-tree1.png')
+    .add('scene1-tree2', 'src/images/scene1-tree2.png')
+    .add('scene1-house1', 'src/images/scene1-house1.png')
+    .add('scene1-house2', 'src/images/scene1-house2.png')
+    .add('scene1-text1', 'src/images/scene1-text1.png')
+    .add('scene1-text2', 'src/images/scene1-text2.png')
+    .add('scene1-clouds1', 'src/images/scene1-clouds1.png')
+    .add('scene1-clouds2', 'src/images/scene1-clouds2.png')
+    .add('scene1-clouds3', 'src/images/scene1-clouds3.png')
+    .add('scene2-tower', 'src/images/scene2-tower.png')
+    .add('scene2-tree1', 'src/images/scene2-tree1.png')
+    .add('scene2-text1', 'src/images/scene2-text1.png')
+    .add('scene2-text2', 'src/images/scene2-text2.png')
+    .add('scene2-man', 'src/images/scene2-man.png')
+    .add('scene2-dio1', 'src/images/scene2-dio1.png')
+    .add('scene2-clouds1', 'src/images/scene2-clouds1.png')
+    .add('scene2-clouds2', 'src/images/scene2-clouds2.png')
+    .add('scene2-clouds3', 'src/images/scene2-clouds3.png')
+    .add('scene2-clouds4', 'src/images/scene2-clouds4.png')
+    .add('scene2-flower', 'src/images/scene2-flower.png')
+    .add('scene3-clouds1', 'src/images/scene3-clouds1.png')
+    .add('scene3-clouds2', 'src/images/scene3-clouds2.png')
+    .add('scene3-clouds3', 'src/images/scene3-clouds3.png')
+    .add('scene3-clouds4', 'src/images/scene3-clouds4.png')
+    .add('scene3-clouds5', 'src/images/scene3-clouds3.png')
+    .add('scene3-dio', 'src/images/scene3-dio.png')
+    .add('scene3-house1', 'src/images/scene3-house1.png')
+    .add('scene3-house2', 'src/images/scene3-house2.png')
+    .add('scene3-man', 'src/images/scene3-man.png')
+    .add('scene3-text1', 'src/images/scene3-text1.png')
+    .add('scene3-text2', 'src/images/scene3-text2.png')
+    .add('scene3-text3', 'src/images/scene3-text3.png')
+    .add('scene4-cat', 'src/images/scene4-cat.png')
+    .add('scene4-chair', 'src/images/scene4-chair.png')
+    .add('scene4-clouds1', 'src/images/scene4-clouds1.png')
+    .add('scene4-clouds2', 'src/images/scene4-clouds2.png')
+    .add('scene4-desk', 'src/images/scene4-desk.png')
+    .add('scene4-door', 'src/images/scene4-door.png')
+    .add('scene4-floor', 'src/images/scene4-floor.png')
+    .add('scene4-flower1', 'src/images/scene4-flower1.png')
+    .add('scene4-flower2', 'src/images/scene4-flower2.png')
+    .add('scene4-flower3', 'src/images/scene4-flower3.png')
+    .add('scene4-flower4', 'src/images/scene4-flower4.png')
+    .add('scene4-food', 'src/images/scene4-food.png')
+    .add('scene4-house', 'src/images/scene4-house.png')
+    .add('scene5-text1', 'src/images/scene5-text1.png')
+    .add('scene5-text2', 'src/images/scene5-text2.png')
+    .add('scene5-text3', 'src/images/scene5-text3.png')
+    .add('scene5-text4', 'src/images/scene5-text4.png')
+    .add('scene5-text5', 'src/images/scene5-text5.png')
+    .add('scene5-text6', 'src/images/scene5-text6.png')
+    .add('scene5-flower1', 'src/images/scene5-flower1.png')
+    .add('scene5-flower2', 'src/images/scene5-flower2.png')
+    .add('scene5-house1', 'src/images/scene5-house1.png')
+    .add('scene5-house2', 'src/images/scene5-house2.png')
+    .add('scene5-point', 'src/images/point.png')
+    .add('scene5-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene5-clouds2', 'src/images/scene4-clouds2.png')
+    .add('scene5-clouds3', 'src/images/scene2-clouds4.png')
+    .add('scene6-tree1', 'src/images/scene6-tree1.png')
+    .add('scene6-tree2', 'src/images/scene6-tree2.png')
+    .add('scene6-tree3', 'src/images/scene6-tree3.png')
+    .add('scene6-house1', 'src/images/scene6-house1.png')
+    .add('scene6-clouds1', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds2', 'src/images/scene2-clouds2.png')
+    .add('scene6-clouds3', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds4', 'src/images/scene4-clouds2.png')
+    .add('scene6-clouds5', 'src/images/scene2-clouds2.png')
+    .add('scene6-clouds6', 'src/images/scene2-clouds2.png')
+    .add('scene6-text1', 'src/images/scene6-text1.png')
+    .add('scene6-text2', 'src/images/scene6-text2.png')
+    .add('scene6-flower1', 'src/images/scene6-flower1.png')
+    .add('scene6-flower2', 'src/images/scene6-flower2.png')
+    .add('scene6-house2', 'src/images/scene6-house2.png')
+    .add('scene6-house3', 'src/images/scene6-house3.png')
+    .add('scene6-house4', 'src/images/scene6-house4.png')
+    .add('scene7-river', 'src/images/scene7-river.png')
+    .add('scene7-river2', 'src/images/scene7-river2.png')
+    .add('scene7-text1', 'src/images/scene7-text1.png')
+    .add('scene7-text2', 'src/images/scene7-text2.png')
+    .add('scene7-house1', 'src/images/scene7-house1.png')
+    .add('scene7-house2', 'src/images/scene7-house2.png')
+    .add('scene7-door', 'src/images/scene7-door.png')
+    .add('scene7-flower1', 'src/images/scene7-flower1.png')
+    .add('scene7-text3', 'src/images/scene7-text3.png')
+    .add('scene7-text4', 'src/images/scene7-text4.png')
+    .add('scene7-bridge', 'src/images/scene7-bridge.png')
+    .add('scene7-tree1', 'src/images/scene7-tree1.png')
+    .add('scene7-tree2', 'src/images/scene7-tree2.png')
+    .add('scene7-tree3', 'src/images/scene7-tree3.png')
+    .add('scene7-tree4', 'src/images/scene7-tree4.png')
+    .add('scene7-glass', 'src/images/scene7-glass.png')
+    .add('scene7-build1', 'src/images/scene7-build1.png')
+    .add('scene7-build2', 'src/images/scene7-build2.png')
+    .add('scene7-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene7-clouds2', 'src/images/scene2-clouds2.png')
+    .add('scene7-clouds3', 'src/images/scene1-clouds2.png')
+    .add('scene8-text1', 'src/images/scene8-text1.png')
+    .add('scene8-text2', 'src/images/scene8-text2.png')
+    .add('scene8-text3', 'src/images/scene8-text3.png')
+    .add('scene8-text4', 'src/images/scene8-text4.png')
+    .add('scene8-text5', 'src/images/scene8-text5.png')
+    .add('scene8-dio1', 'src/images/dio.png')
+    .add('scene8-dio2', 'src/images/dio.png')
+    .add('scene8-dio3', 'src/images/dio.png')
+    .add('scene8-bridge1', 'src/images/scene8-bridge1.png')
+    .add('scene8-bridge2', 'src/images/scene8-bridge2.png')
+    .add('scene8-bridge3', 'src/images/scene8-bridge3.png')
+    .add('scene8-build1', 'src/images/scene8-build1.png')
+    .add('scene8-build2', 'src/images/scene8-build2.png')
+    .add('scene8-build3', 'src/images/scene8-build3.png')
+    .add('scene8-build4', 'src/images/scene8-build4.png')
+    .add('scene8-build5', 'src/images/scene8-build5.png')
+    .add('scene8-build6', 'src/images/scene8-build6.png')
+    .add('scene8-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene8-clouds2', 'src/images/scene1-clouds2.png')
+    .add('scene8-clouds3', 'src/images/scene3-clouds3.png')
+    .add('scene8-clouds4', 'src/images/scene2-clouds1.png')
+    .add('scene9-text1', 'src/images/scene9-text1.png')
+    .add('scene9-air', 'src/images/scene9-air.png')
+    .add('scene9-build1', 'src/images/scene9-build1.png')
+    .add('scene9-build2', 'src/images/scene9-build2.png')
+    .add('scene9-build3', 'src/images/scene9-build3.png')
+    .add('scene9-build4', 'src/images/scene9-build4.png')
+    .add('scene9-bridge1', 'src/images/scene9-bridge1.png')
+    .add('scene9-train', 'src/images/scene9-train.png')
+    .add('scene9-tree1', 'src/images/scene9-tree1.png')
+    .add('scene9-clouds1', 'src/images/scene2-clouds4.png')
+    .add('scene9-clouds2', 'src/images/scene3-clouds2.png')
+    .add('scene9-clouds3', 'src/images/scene2-clouds4.png')
+    .add('scene9-clouds4', 'src/images/scene2-clouds2.png')
+    .add('scene9-clouds5', 'src/images/scene3-clouds4.png')
+    .add('scene9-clouds6', 'src/images/scene3-clouds4.png')
+    .add('scene10-text1', 'src/images/scene10-text1.png')
+    .add('scene10-tree1', 'src/images/scene10-tree1.png')
+    .add('scene10-tree2', 'src/images/scene10-tree2.png')
+    .add('scene10-build1', 'src/images/scene10-build1.png')
+    .add('scene10-bridge1', 'src/images/scene10-bridge1.png')
+    .add('scene10-boat1', 'src/images/scene10-boat1.png')
+    .add('scene10-boat2', 'src/images/scene10-boat2.png')
+    .add('scene10-river', 'src/images/scene10-river.png')
+    .add('scene10-stone1', 'src/images/scene10-stone1.png')
+    .add('scene10-desk', 'src/images/scene10-desk.png')
+    .add('scene10-food1', 'src/images/scene10-food1.png')
+    .add('scene10-food2', 'src/images/scene10-food2.png')
+    .add('scene10-text2', 'src/images/scene10-text2.png')
+    .add('scene10-text3', 'src/images/scene10-text3.png')
+    .add('scene11-text1', 'src/images/scene11-text1.png')
+    .add('scene11-text2', 'src/images/scene11-text2.png')
+    .add('scene11-text3', 'src/images/scene11-text3.png')
+    .add('scene11-text4', 'src/images/scene11-text4.png')
+    .add('scene11-glass1', 'src/images/scene11-glass1.png')
+    .add('scene11-glass2', 'src/images/scene11-glass2.png')
+    .add('scene11-build1', 'src/images/scene11-build1.png')
+    .add('scene11-build2', 'src/images/scene11-build2.png')
+    .add('scene11-build3', 'src/images/scene11-build3.png')
+    .add('scene11-build4', 'src/images/scene11-build4.png')
+    .add('scene11-build5', 'src/images/scene11-build5.png')
+    .add('scene11-build6', 'src/images/scene11-build6.png')
+    .add('scene11-build7', 'src/images/scene11-build7.png')
+    .add('scene11-clouds1', 'src/images/scene2-clouds3.png')
+    .add('scene11-clouds2', 'src/images/scene1-clouds1.png')
+    .add('scene11-clouds3', 'src/images/scene3-clouds1.png')
+    .add('scene13-text1', 'src/images/scene13-text1.png')
+    .add('scene13-text2', 'src/images/scene13-text2.png')
+    .add('scene13-clouds1', 'src/images/scene13-clouds1.png')
+    .add('scene13-clouds2', 'src/images/scene4-clouds1.png')
+    .add('scene13-clouds3', 'src/images/scene4-clouds1.png')
+    .add('scene13-clouds4', 'src/images/scene13-clouds2.png')
+    .add('scene13-bg1', 'src/images/scene13-bg1.png')
+    .add('scene14-bg', 'src/images/scene14-bg.png')
+    .add('scene14-text1', 'src/images/scene14-text1.png')
+    .add('scene14-text2', 'src/images/scene14-text2.png')
+    .add('scene14-build1', 'src/images/scene14-build1.png')
+    .add('scene14-build2', 'src/images/scene14-build2.png')
+    .add('scene14-build3', 'src/images/scene14-build3.png')
+    .add('scene14-build4', 'src/images/scene14-build4.png')
+    .add('scene14-tree1', 'src/images/scene14-tree1.png')
+    .add('scene14-tree2', 'src/images/scene14-tree2.png')
+    .add('scene14-tree3', 'src/images/scene14-tree3.png')
+    .add('scene15-bg1', 'src/images/scene15-bg1.png')
+    .add('scene15-text1', 'src/images/scene15-text1.png')
+    .add('scene15-text2', 'src/images/scene15-text2.png')
+    .add('scene15-text3', 'src/images/scene15-text3.png')
+    .add('scene15-tower1', 'src/images/scene15-tower1.png')
+    .add('scene15-clouds1', 'src/images/scene15-clouds1.png')
+    .add('scene15-clouds2', 'src/images/scene15-clouds2.png')
+    .add('scene15-clouds3', 'src/images/scene15-clouds3.png')
+    .add('scene15-clouds4', 'src/images/scene15-clouds4.png')
+    .add('scene15-clouds5', 'src/images/scene15-clouds5.png')
+    .add('share', 'src/images/share.png')
+    .add('more', 'src/images/more.png')
+    .add('src/images/data1.json')
+
+
+loader.on("progress", function (target, resource) {
+    //加载进度
+    $('.home .hl-block2').css('width', parseInt(target.progress) + "%")
+    $('.home .hl-text').html(parseInt(target.progress) + "%")
+});
+
+loader.on('complete', function (target) {
+    document.getElementById('canvas').appendChild(app.view);
+    initScenes(); // 初始化场景
+    initSprites();  // 初始化精灵
+    initAnimation(); // 初始化动画
+
+    initClickEvent();
+
+    app.stage.scale.set(scale, scale);  // 根据屏幕实际宽高放大舞台
+    initTouch(true, 'y');
+});
+
+loader.load(setup);
+
+function initClickEvent() {
+    let showIndex = [
+        'scene1-house2',
+        'scene3-house2',
+        'scene5-house2',
+        'scene6-house3',
+        'scene7-house2',
+        'scene7-build2',
+        'scene8-build6',
+        'scene8-build3',
+        'scene11-build3',
+        'scene11-build5',
+    ];
+    for(let i=0;i<10;i++){
+        let item=sprites['point'+(i+1)];
+        item.on('pointertap', function () {
+            if (item.is_show != 1) {
+                TweenMax.to(sprites[showIndex[i]], 1.5, {
+                    alpha: 1,
+                    onComplete: function () {
+                        //显示提示框
+                        $('.modal-tips').show().children('.mt-item'+(i+1)).fadeIn();
+                        $('.ct-img1').addClass('on');
+                        sprites[showIndex[i]].is_show = 1;
+                    }
+                });
+            }
+        });
+    }
+}
+function closeTips() {
+    $('.modal-tips').hide().children('div').hide();
+}
+
+
+
+function setup(){
+    let id = PIXI.loader.resources["src/images/data1.json"].textures;
+    let sprite = new Sprite(id["scene1-clouds1.png"]);
+    app.stage.addChild(sprite);
+}

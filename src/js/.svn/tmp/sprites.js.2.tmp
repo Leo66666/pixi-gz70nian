@@ -1,0 +1,915 @@
+const spritesLists = [ // 精灵数据：定义每个精灵的坐标
+    //第一个场面的精灵
+    {
+        "bg1": {
+            position: { x: 0, y: 0 },
+        },
+        "scene1-clouds1": {
+            position: { x: 150, y: 290 },
+        },
+        "scene1-clouds2": {
+            position: { x: -150, y: 550 },
+        },
+        "scene1-clouds3": {
+            position: { x: 0, y: 190 },
+        },
+        "scene1-text1": {
+            position: { x: 140, y: 270 },
+        },
+        "scene1-tree1": {
+            position: { x: 0, y: 584 },
+        },
+        "scene1-tree1": {
+            position: { x: 0, y: 584 },
+        },
+        "scene1-house1": {
+            position: { x: 0, y: 693 },
+        },
+        "scene1-house2": {
+            position: { x: 0, y: 693 },
+            alpha: 0,
+        },
+        "scene1-text2": {
+            position: { x: 480, y: 912 },
+            alpha: 0
+        },
+        "scene1-tree2": {
+            position: { x: 0, y: 1184 },
+        },
+    },
+    {
+        "bg2": {
+            position: { x: 0, y: 0 },
+        },
+        "scene2-clouds1": {
+            position: { x: 320, y: 360 },
+        },
+        "scene2-clouds2": {
+            position: { x: 0, y: 124 },
+        },
+        "scene2-clouds3": {
+            position: { x: 0, y: 650 },
+        },
+        "scene2-tower": {
+            position: { x: 360, y: -150 },
+        },
+        "scene2-man": {
+            position: { x: 280, y: 820 },
+            anchor: { x: 0.5, y: 1 },
+        },
+        "scene2-tree1": {
+            position: { x: 60, y: 700 },
+        },
+        "scene2-text1": {
+            position: { x: 135, y: 50 },
+        },
+        "scene2-text2": {
+            position: { x: 105, y: 205 },
+        },
+        "scene2-dio1": {
+            position: { x: 115, y: 370 },
+            alpha: 1,
+        },
+        "scene2-clouds4": {
+            position: { x: 122, y: 840 },
+        },
+        "scene2-flower": {
+            position: { x: 780, y: 950 },
+            anchor: { x: 1, y: 0.25 },
+            alpha: 1
+        },
+    },
+    {
+        "bg3": {
+            position: { x: 0, y: 0 },
+        },
+        "scene3-text1": {
+            position: { x: 207, y: -50 },
+        },
+        "scene3-clouds1": {
+            position: { x: 0, y: 80 },
+        },
+        "scene3-clouds2": {
+            position: { x: 40, y: 180 },
+        },
+        // "scene3-clouds5": {
+        //     position: { x: 350, y: 80 + 310 },
+        // },
+        "scene3-house1": {
+            position: { x: 0, y: 200 },
+        },
+        "scene3-house2": {
+            position: { x: 0, y: 200 },
+            alpha: 0
+        },
+        "scene3-clouds3": {
+            position: { x: 0, y: 80 + 543 },
+        },
+        "scene3-clouds4": {
+            position: { x: 336, y: 80 + 570 },
+        },
+        // "scene3-man": {
+        //     position: { x: 260, y: 622 },
+        //     alpha: 1
+        // },
+        "scene3-dio": {
+            position: { x: 288, y: 540 },
+        },
+        "scene3-text2": {
+            position: { x: 326, y: 565 },
+            alpha: 1
+        },
+        "scene3-text3": {
+            position: { x: 122, y: 200 + 754 },
+        },
+    },
+    {
+        "bg4": {
+            position: { x: 0, y: 0 },
+        },
+        "scene4-floor": {
+            position: { x: 215, y: 593 },
+            alpha: 1
+        },
+        "scene4-house": {
+            position: { x: 198, y: 300 },
+            alpha: 1
+        },
+        "scene4-flower2": {
+            position: { x: 119, y: 40 },
+        },
+        "scene4-door": {
+            position: { x: 375, y: 514 },
+            anchor: { x: 0.5, y: 0.5 },
+            alpha: 1
+        },
+        "scene4-chair": {
+            position: { x: 285, y: 675 },
+            alpha: 1
+        },
+        "scene4-cat": {
+            position: { x: 450, y: 1000 },
+        },
+        "scene4-desk": {
+            position: { x: 40, y: 960 },
+        },
+        "scene4-food": {
+            position: { x: 80, y: 950 },
+            alpha: 1
+        },
+        "scene4-flower1": {
+            position: { x: 202, y: -100 },
+        },
+        "scene4-flower3": {
+            position: { x: 0, y: 50 },
+        },
+        "scene4-flower4": {
+            position: { x: 545, y: 416 },
+        },
+    },
+    {
+        "bg5": {
+            position: { x: 0, y: 0 },
+        },
+        "scene5-clouds1": {
+            position: { x: 180, y: -30 },
+        },
+        "scene5-text1": {
+            position: { x: 186, y: 50 },
+        },
+        "scene5-text2": {
+            position: { x: 320, y: 125 },
+        },
+        "scene5-text3": {
+            position: { x: 62, y: 212 },
+        },
+        "scene5-house1": {
+            position: { x: 0, y: 295 },
+        },
+        "scene5-house2": {
+            position: { x: 0, y: 295 },
+            alpha: 0
+        },
+        "scene5-flower1": {
+            position: { x: 0, y: 482 },
+            anchor: { x: 0.48, y: 0.49 },
+        },
+        "scene5-clouds2": {
+            position: { x: -150, y: 580 },
+        },
+        "scene5-clouds3": {
+            position: { x: 100, y: 496 },
+        },
+        "scene5-flower2": {
+            position: { x: 800, y: 590 },
+            anchor: { x: 1, y: 0 },
+        },
+        "scene5-text4": {
+            position: { x: 175, y: 795 + 30 },
+        },
+        "scene5-text5": {
+            position: { x: 275, y: 875 + 30 },
+        },
+        "scene5-text6": {
+            position: { x: 164, y: 980 },
+        },
+
+    },
+    {
+        "bg6": {
+            position: { x: 0, y: 0 },
+        },
+        "scene6-tree1": {
+            position: { x: 0, y: -240 },
+        },
+        "scene6-tree2": {
+            position: { x: 0, y: 320 },
+        },
+        "scene6-house1": {
+            position: { x: 135, y: -50 },
+        },
+        "scene6-tree3": {
+            position: { x: 660, y: 20 },
+        },
+        "scene6-clouds1": {
+            position: { x: 188, y: -300 },
+        },
+        "scene6-clouds2": {
+            position: { x: 0, y: -300 },
+        },
+        "scene6-clouds3": {
+            position: { x: -400, y: 150 },
+        },
+        "scene6-leaf1": {
+            position: { x: 750, y: -240-100 },
+        },
+        "scene6-leaf2": {
+            position: { x: 750, y: -300-100 },
+        },
+        "scene6-leaf3": {
+            position: { x: 750, y: -260-100 },
+        },
+        "scene6-leaf4": {
+            position: { x: 750, y: -200-100 },
+        },
+        "scene6-text1": {
+            position: { x: 150, y: 530 - 50 },
+        },
+        "scene6-text2": {
+            position: { x: 200, y: 620 - 50 },
+        },
+        "scene6-clouds4": {
+            position: { x: 456, y: 690 - 50 },
+        },
+        "scene6-clouds5": {
+            position: { x: -250, y: 530 - 50 },
+        },
+        "scene6-clouds6": {
+            position: { x: 0, y: 800 - 50 },
+        },
+        "scene6-flower1": {
+            position: { x: 0, y: 620 - 50 },
+        },
+        "scene6-house4": {
+            position: { x: 156, y: 932 - 50 },
+        },
+        "scene6-house2": {
+            position: { x: 460, y: 800 - 50 },
+        },
+        "scene6-house3": {
+            position: { x: 460, y: 800 - 50 },
+            alpha: 0
+        },
+    },
+    {
+        "bg7": {
+            position: { x: 0, y: 0 },
+        },
+        "scene7-river": {
+            position: { x: 53, y: 50 - 200 },
+        },
+        "scene6-flower2": {
+            position: { x: 580, y: -360 },
+        },
+        "scene7-text1": {
+            position: { x: 346, y: 92 - 200 },
+        },
+        "scene7-text2": {
+            position: { x: 248, y: 153 - 200 },
+        },
+        "scene7-door": {
+            position: { x: 170, y: 270 - 200 },
+        },
+        "scene7-river2": {
+            position: { x: 0, y: 278 - 200 },
+        },
+        "scene7-house1": {
+            position: { x: 0, y: -230 },
+        },
+        "scene7-house2": {
+            position: { x: 0, y: -230 },
+            alpha: 0
+        },
+        "scene7-flower1": {
+            position: { x: 0, y: 400 - 200 },
+        },
+        "scene7-text3": {
+            position: { x: 274, y: 405 - 200 },
+        },
+        "scene7-bridge": {
+            position: { x: 0, y: 580 - 200 },
+        },
+        "scene7-bridge2": {
+            position: { x: 215, y: 580 - 200+116 },
+            anchor: { x: 0.041, y: 1 },
+            rotation:-0.5
+        },
+        "scene7-bridge3": {
+            position: { x: 519, y: 580 - 200+116 },
+            anchor: { x: 0.959, y: 1 },
+            rotation:0.5
+        },
+        "scene7-tree1": {
+            position: { x: 440, y: 742 - 200 },
+        },
+        "scene7-tree2": {
+            position: { x: 565 + 190, y: 1255 - 200 },
+            anchor: { x: 1, y: 0 },
+        },
+        "scene7-tree3": {
+            position: { x: 0, y: 815 - 200 },
+        },
+        "scene7-text4": {
+            position: { x: 465, y: 1030 - 200 },
+        },
+        "scene7-glass": {
+            position: { x: 0, y: 1320 - 200 - 50 },
+        },
+        "scene7-build1": {
+            position: { x: 215, y: 1020 - 200 - 50 },
+        },
+        "scene7-build2": {
+            position: { x: 215, y: 1020 - 200 - 50 },
+            alpha: 0
+        },
+        "scene7-clouds1": {
+            position: { x: 415, y: 775 - 200 },
+        },
+        "scene7-clouds2": {
+            position: { x: -185, y: 930 - 200 },
+        },
+        "scene7-clouds3": {
+            position: { x: -20, y: 1385 - 200 - 50 },
+        },
+        "scene7-tree4": {
+            position: { x: 0, y: 1068 - 200 + 119 },
+            anchor: { x: 0, y: 1 },
+        },
+    },
+    {
+        "bg8": {
+            position: { x: 0, y: 0 },
+        },
+        "scene8-clouds1": {
+            position: { x: 253, y: 145 },
+        },
+        "scene8-clouds2": {
+            position: { x: -200, y: 345 },
+        },
+        "scene8-text1": {
+            position: { x: 210, y: 90 },
+        },
+        "scene8-text5": {
+            position: { x: 25, y: 966 },
+        },
+        "scene8-build4": {
+            position: { x: 135, y: 448 },
+        },
+        "scene8-build5": {
+            position: { x: 360, y: 377 },
+        },
+        "scene8-build6": {
+            position: { x: 360, y: 377 },
+            alpha: 0
+        },
+        "scene8-bridge1": {
+            position: { x: 0, y: 383 },
+        },
+        "scene8-bridge2": {
+            position: { x: 0, y: 785 },
+        },
+        "scene8-car1": {
+            position: { x: 0, y: 785 },
+        },
+        "scene8-car2": {
+            position: { x: 60, y: 785 },
+        },
+        "scene8-car3": {
+            position: { x: 120, y: 790 },
+        },
+        "scene8-build2": {
+            position: { x: 570, y: 367 },
+        },
+        "scene8-build3": {
+            position: { x: 570, y: 367 },
+            alpha: 0
+        },
+        "scene8-build1": {
+            position: { x: 436, y: 700 },
+        },
+        "scene8-dio1": {
+            position: { x: 10, y: 300 },
+        },
+        "scene8-text2": {
+            position: { x: 66, y: 337 },
+        },
+        "scene8-dio2": {
+            position: { x: 165, y: 640 },
+        },
+        "scene8-text3": {
+            position: { x: 240, y: 676 },
+        },
+        "scene8-dio3": {
+            position: { x: 407, y: 940 },
+        },
+        "scene8-text4": {
+            position: { x: 445, y: 980 },
+        },
+    },
+    {
+        "bg9": {
+            position: { x: 0, y: 0 },
+        },
+        "scene8-clouds3": {
+            position: { x: -200, y: 112 - 300 },
+        },
+        "scene8-clouds4": {
+            position: { x: 450, y: 207 - 300 },
+        },
+        "scene8-bridge3": {
+            position: { x: 0, y: -300 },
+        },
+        "scene8-car4": {
+            position: { x: 700, y: -260 },
+        },
+        "scene8-car5": {
+            position: { x: 750, y: -295 },
+        },
+        "scene9-text1": {
+            position: { x: 204, y: 100 },
+        },
+        "scene9-clouds1": {
+            position: { x: 140, y: 248 + 100 },
+        },
+        "scene9-build1": {
+            position: { x: 0, y: 200 + 100 },
+        },
+        "scene9-clouds2": {
+            position: { x: 0, y: 430 + 100 },
+        },
+        "scene9-build2": {
+            position: { x: 82, y: 358 + 100 },
+        },
+        "scene9-air": {
+            // position: { x: 450, y: 185 + 100 },
+            position: { x: -133, y: 100 },
+        },
+    },
+    {
+        "bg10": {
+            position: { x: 0, y: 0 },
+        },
+        "scene9-clouds3": {
+            position: { x: 100, y: -660 + 100 },
+        },
+        "scene9-build3": {
+            position: { x: 0, y: -660 },
+        },
+        "scene9-build4": {
+            position: { x: 282, y: -650 + 224 },
+        },
+        "scene9-clouds4": {
+            position: { x: 0, y: -660 + 520 },
+        },
+        "scene9-tree1": {
+            position: { x: 0, y: -660 + 675 },
+        },
+        "scene9-bridge1": {
+            position: { x: 0, y: -665 },
+        },
+        "scene9-train": {
+            position: { x: 218, y: -660 + 498 },
+        },
+        "scene9-clouds5": {
+            position: { x: 442, y: -660 + 580 },
+        },
+        "scene9-clouds6": {
+            position: { x: 380, y: -660 + 730 },
+        },
+        "scene10-text1": {
+            position: { x: 200, y: -710 + 984 },
+        },
+        "scene10-build1": {
+            position: { x: 400, y: -660 + 1596 },
+        },
+        "scene10-tree2": {
+            position: { x: 0, y: -660 + 1733 },
+        },
+    },
+    {
+        "bg11": {
+            position: { x: 0, y: 0 },
+        },
+        "scene10-river": {
+            position: { x: 0, y: 630 - 850 },
+        },
+        "scene10-bridge1": {
+            position: { x: 0, y: -580 },
+        },
+        "scene10-tree1": {
+            position: { x: 0, y: -850 },
+        },
+        "scene10-lantern1": {
+            position: { x: 220, y: -550 },
+            anchor:{x:0.72,y:0},
+        },
+        "scene10-lantern2": {
+            position: { x: 400, y: -560 },
+            anchor:{x:0.72,y:0}
+        },
+        "scene10-lantern3": {
+            position: { x: 550, y: -575 },
+            anchor:{x:0.72,y:0}
+        },
+        "scene10-stone1": {
+            position: { x: 300, y: 660 - 850 },
+        },
+        "scene10-boat2": {
+            position: { x: 0, y: 898 - 850 },
+        },
+        "scene10-boat1": {
+            position: { x: 215, y: 803 - 850 },
+        },
+        "scene10-desk": {
+            position: { x: 0, y: 1114 - 850 },
+        },
+        "scene10-food1": {
+            position: { x: 0, y: 936 - 850 },
+        },
+        "scene10-food2": {
+            position: { x: 103, y: 1260 - 850 },
+        },
+        "scene10-leaf1": {
+            position: { x: 50, y: 800 - 850-650 },
+        },
+        "scene10-leaf2": {
+            position: { x: 70, y: 860 - 850-650 },
+        },
+        "scene10-leaf3": {
+            position: { x: 130, y: 920 - 850-650 },
+        },
+        "scene10-leaf4": {
+            position: { x: 160, y: 980 - 850-650 },
+        },
+        "scene10-text2": {
+            position: { x: 158, y: 1910 - 850 },
+        },
+        "scene10-text3": {
+            position: { x: 276, y: 1045 - 850 },
+        },
+    },
+    {
+        "bg12": {
+            position: { x: 0, y: 0 },
+        },
+        "scene11-clouds1": {
+            position: { x: -150, y: -60 },
+        },
+        "scene11-text1": {
+            position: { x: 45, y: 117 },
+        },
+        "scene11-text2": {
+            position: { x: 45, y: 240 },
+        },
+        "scene11-build7": {
+            position: { x: 0, y: 325 },
+        },
+        "scene11-glass1": {
+            position: { x: 0, y: 567 },
+        },
+        "scene11-glass2": {
+            position: { x: 295, y: 384 },
+        },
+        "scene11-build1": {
+            position: { x: 0, y: 567 },
+        },
+        "scene11-build2": {
+            position: { x: 50, y: 343 },
+        },
+        "scene11-build3": {
+            position: { x: 50, y: 343 },
+            alpha: 0
+        },
+        "scene11-build4": {
+            position: { x: 406, y: 177 },
+        },
+        "scene11-build5": {
+            position: { x: 406, y: 177 },
+            alpha: 0
+        },
+        "scene11-build6": {
+            position: { x: 595, y: 379 },
+        },
+        "scene11-clouds2": {
+            position: { x: 250, y: -60 },
+        },
+        "scene11-clouds3": {
+            position: { x: 0, y: 500 },
+        },
+        "scene11-text3": {
+            position: { x: 240, y: 856 },
+        },
+        "scene11-text4": {
+            position: { x: 240, y: 1038 },
+        },
+    },
+    {
+        "bg13": {
+            position: { x: 0, y: 0 },
+        },
+        "scene13-clouds1": {
+            position: { x: 129, y: -200 - 100 },
+        },
+        "scene13-clouds2": {
+            position: { x: -400, y: 400 - 100 },
+            alpha:0
+        },
+        "scene13-clouds3": {
+            position: { x: 0, y: 1000 - 100 },
+        },
+        "scene13-text1": {
+            position: { x: 154, y: 0 - 100 },
+        },
+        "scene13-bg1": {
+            position: { x: 0, y: 240 - 100 },
+        },
+    },
+    {
+        "bg14": {
+            position: { x: 0, y: 0 },
+        },
+        "scene14-bg": {
+            position: { x: 0, y: 225 - 130 },
+        },
+        "scene14-build1": {
+            position: { x: 60, y: 175 - 130 },
+        },
+        "scene14-tree1": {
+            position: { x: 180, y: 350 - 130 },
+        },
+        "scene14-build2": {
+            position: { x: 355, y: 285 - 130 },
+        },
+        "scene14-build3": {
+            position: { x: 365, y: 605 - 130 },
+        },
+        "scene14-build4": {
+            position: { x: 0, y: 790 - 130 },
+        },
+        "scene14-tree3": {
+            position: { x: 565, y: 890 - 130 },
+        },
+        "scene13-clouds4": {
+            position: { x: 155, y: -278 },
+        },
+        "scene14-tree2": {
+            position: { x: 416, y: 511 - 130 },
+        },
+        "scene14-text1": {
+            position: { x: 144, y: 1200 - 130 },
+        },
+        "scene13-text2": {
+            position: { x: 188, y: -130 },
+        },
+        "scene14-text2": {
+            position: { x: 20, y: 520 - 130 },
+        },
+    },
+    {
+        "bg15": {
+            position: { x: 0, y: 0 },
+        },
+        "scene13-zhifeiji": {
+            position: { x: 580, y: -2000 - 100 },
+        },
+        "scene15-bg1": {
+            position: { x: 0, y: 460 },
+        },
+        "scene15-tower1": {
+            position: { x: 0, y: 0 },
+        },
+        "scene15-clouds5": {
+            position: { x: 0, y: 1900 },
+        },
+        "scene15-clouds1": {
+            position: { x: 750, y: 20 },
+        },
+        "scene15-clouds2": {
+            position: { x: -600, y: 400 },
+        },
+        "scene15-clouds3": {
+            position: { x: 300, y: 1400 },
+        },
+        "scene15-text1": {
+            position: { x: 318, y: 95 },
+        },
+        "scene15-text2": {
+            position: { x: 318, y: 420 },
+        },
+        "scene15-text3": {
+            position: { x: 156, y: 2116 },
+        },
+    }
+];
+let spriteList = {
+    'scene1-clouds2': 1,
+    'scene1-clouds3': 1,
+    'scene1-house1': 1,
+    'scene1-house2': 1,
+    'scene1-text1': 1,
+    'scene1-text2': 1,
+    'scene1-tree1': 1,
+    'scene2-clouds1': 1,
+    'scene2-clouds2': 1,
+    'scene2-clouds3': 1,
+    'scene2-clouds4': 1,
+    'scene2-dio1': 1,
+    'scene2-flower': 1,
+    'scene2-man': 1,
+    'scene2-text1': 1,
+    'scene2-text2': 1,
+    'scene2-tower': 2,
+    'scene2-tree1': 2,
+    'scene3-clouds1': 2,
+    'scene3-clouds2': 2,
+    'scene3-clouds3': 2,
+    'scene3-clouds4': 2,
+    'scene3-dio': 2,
+    'scene3-house1': 2,
+    'scene3-house2': 2,
+    'scene3-man': 2,
+    'scene3-text1': 2,
+    'scene3-text2': 2,
+    'scene3-text3': 2,
+    'scene4-cat': 2,
+    'scene4-chair': 2,
+    'scene4-clouds1': 2,
+    'scene4-clouds2': 3,
+    'scene4-desk': 3,
+    'scene4-door': 3,
+    'scene4-floor': 3,
+    'scene4-flower1': 3,
+    'scene4-flower2': 3,
+    'scene4-flower3': 3,
+    'scene4-flower4': 3,
+    'scene4-food': 3,
+    'scene4-house': 3,
+    'scene5-flower1': 3,
+    'scene5-flower2': 3,
+    'scene5-house1': 3,
+    'scene5-house2': 4,
+    'scene5-text2': 4,
+    'scene5-text3': 4,
+    'scene5-text4': 4,
+    'scene5-text5': 4,
+    'scene5-text6': 4,
+    'scene6-flower1': 4,
+    'scene6-flower2': 4,
+    'scene6-house1': 4,
+    'scene6-house2': 4,
+    'scene6-house3': 4,
+    'scene6-house4': 4,
+    'scene6-text1': 4,
+    'scene6-text2': 4,
+    'scene6-tree1': 4,
+    'scene6-tree2': 4,
+    'scene6-tree3': 4,
+    'scene6-bridge': 4,
+    'scene6-build1': 4,
+    'scene6-build2': 4,
+    'scene6-door': 4,
+    'scene6-flower1': 4,
+    'scene6-glass': 4,
+    'scene7-house1': 5,
+    'scene7-house2': 5,
+    'scene7-river': 5,
+    'scene7-river2': 5,
+    'scene7-text1': 5,
+    'scene7-text2': 5,
+    'scene7-text3': 5,
+    'scene7-text4': 5,
+    'scene7-tree1': 5,
+    'scene7-tree2': 5,
+    'scene7-tree3': 5,
+    'scene7-tree4': 5,
+    'scene8-bridge1': 5,
+    'scene8-bridge2': 5,
+    'scene8-bridge3': 5,
+    'scene8-build1': 5,
+    'scene8-build2': 5,
+    'scene8-build3': 5,
+    // 'scene7-bridge': 4,
+    'scene7-flower1': 4,
+    'scene7-glass': 4,
+    'scene7-build1': 4,
+    'scene7-build2': 4,
+    'scene8-build4': 6,
+    'scene8-build5': 6,
+    'scene8-build6': 6,
+    'scene8-text1': 6,
+    'scene8-text2': 6,
+    'scene8-text3': 6,
+    'scene8-text4': 6,
+    'scene8-text5': 6,
+    'scene9-air': 6,
+    'scene9-build1': 6,
+    'scene9-text1': 6,
+    'scene9-tree1': 6,
+    'scene10-boat1': 6,
+    'scene10-boat2': 6,
+    'scene10-build1': 6,
+    'scene9-build2': 7,
+    'scene9-build3': 7,
+    'scene9-build4': 7,
+    'scene10-bridge1': 7,
+    'scene10-desk': 7,
+    'scene10-food1': 7,
+    'scene10-stone1': 7,
+    'scene9-bridge1': 6,
+    'scene10-food2': 8,
+    'scene10-river': 8,
+    'scene10-text1': 8,
+    'scene10-text2': 8,
+    'scene10-text3': 8,
+    // 'scene10-tree1': 8,
+    'scene10-tree2': 8,
+    'scene11-build1': 8,
+    'scene11-build2': 8,
+    'scene11-build3': 8,
+    'scene11-build4': 8,
+    'scene11-build5': 8,
+    'scene11-build6': 8,
+    'scene11-glass1': 8,
+    'scene11-build7': 9,
+    'scene11-glass2': 9,
+    'scene11-text1': 9,
+    'scene11-text2': 9,
+    'scene11-text3': 9,
+    'scene11-text4': 9,
+    'scene13-bg1': 9,
+    'scene13-clouds1': 9,
+    'scene13-clouds2': 9,
+    'scene13-text1': 9,
+    'scene13-text2': 9,
+    'scene14-build1': 9,
+    'scene14-build2': 9,
+    'scene14-build3': 9,
+    'scene14-build4': 9,
+    'more': 10,
+    'scene14-bg': 10,
+    'scene14-text1': 10,
+    'scene14-tree1': 10,
+    'scene14-tree2': 10,
+    'scene14-tree3': 10,
+    'scene15-text1': 10,
+    'scene15-text2': 10,
+    'scene15-text3': 10,
+    'share': 10,
+}
+
+
+
+// 333少树叶
+let sprites = {};
+
+//初始化精灵的位置
+function initSprites() {
+    spritesLists.forEach((item, i) => {
+        for (key in item) {
+            if(spriteList[key]){
+                let id = PIXI.loader.resources[`src/images/data${spriteList[key]}.json`].textures;
+                sprites[key] = new Sprite(id[key+'.png']);
+            }else{
+                sprites[key] = PIXI.Sprite.from(key);
+            }
+            addScene(sprites[key], item[key], i + 1)
+        }
+    })
+}
+// 把postion的属性添加到精灵元素中
+function addScene(sprite, props, i) {
+    for (key in props) {
+        sprite[key] = props[key];
+    }
+    scenes['scene' + i].addChild(sprite)
+}
