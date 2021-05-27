@@ -13,7 +13,7 @@ TexturePackerGUI雪碧图使用介绍：https://www.bookstack.cn/read/LearningPi
 插件来源： https://www.npmjs.com/package/http-server
 
 # 线上地址
-http://huodong.dayoo.com/html/gz70nianjubian/index.shtml
+https://leo66666.github.io/pixi-gz70nian/index.shtml
 
 # 相关问题
 1.alloytouch.js在使用过程中有时候change方法会产生NAN的错误，导致页面不能正常滑动，这个根据他们官网的issues发现是低版本Bug导致，解决办法升级到最新的文件就行。
